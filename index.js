@@ -1,4 +1,7 @@
 const inquirer = require('inquirer');
+const generatePage = require('./src/readme-template');
+const writeFile = require('./utils/generate-page.js');
+
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -57,11 +60,47 @@ const promptUser = () => {
         {
             type: 'list',
             name: 'license',
-            message: 'Please select a license for your project.',
-            choices: ['Apache', 'MIT', 'Boost', 'Mozilla Public License']
+            message: 'Please select a license for your project. (REQUIRED)',
+            choices: ['Apache', 'MIT', 'Boost', 'Mozilla Public License'],
+            validate: licenseInput => {
+                if (licenseInput) {
+                    return true;
+                } else {
+                    console.log('Please select a license');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'dependecies',
+            message: 'What command should be run to install dependencies?',
+            default: 'npm i'
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: 'What command should be run to run tests?',
+            default: 'npm test'
+        },
+        {
+            type: 'input',
+            name: 'contribution',
+            message: 'what does the user need to know about contribution to the repo'
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'What does the user need to know about using the repo'
         }
-    ])
+    ]);
 };
 
 
-promptUser();
+promptUser()
+    .then(readmeData => {
+        return generatePage(readmeData);
+    })
+    .then(readmePage => {
+        return writeFile(readmePage);
+    });
