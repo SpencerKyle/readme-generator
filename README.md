@@ -1,31 +1,17 @@
+# README Generator
 
-    # README gen
+This is an application that uses inquirer and node to help create an easy experience for writing any project README files!
 
-    ## Description
+## Installation
 
-    ## Table of Contents
+Install the zip file and in the terminal type `npm i`
 
-    * []
-    * []
-    * []
-    * []
+## Usage
 
-    ## Installation
+`node index.js`
 
-    ## Usage
+## Demo
 
-    ## License
+![gif](./assets/demo.gif)
 
-    ## Contributing
-
-    ## Tests
-
-    type npm test in the terminal to run the tests (make sure jest has been installed)
-
-    ## Questions
-
-    [Github](https://github.com/spencerkyle)
-    
-    If you have any questions, feel free to email me at [spencer.kyle@Hotmail.com](mailto:spencer.kyle@Hotmail.com)
-
-    
+[Web.mp link](https://watch.screencastify.com/v/YRo1Lh9lC0nPZe15iTUJ)
